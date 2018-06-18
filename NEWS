@@ -1,0 +1,11 @@
+# rcrypt 0.1.1 (2015-09-19)
+
+- Place single quotes around Gpg4win and GPGTools in the Description.
+- Better code in `R/encrypt.r` and `R/decrypt.r` by using `--batch` flag for password insertion. This requires using shell() instead of system2() for Windows.
+- Add `verbosity` argument to `encrypt()` and `decrypt()` functions.
+- General code review.
+
+# rcrypt 0.1.0 (2015-09-05)
+
+- Initial release
+- Provides functions `encrypt()` and `decrypt()`
