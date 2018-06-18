@@ -1,4 +1,4 @@
-Package: rcrypt2
+Package: RcryptAdj
 Title: Symmetric File Encryption Using GPG
 Version: 0.1.1
 Authors@R: person("Bavo", "De Cock", email = "bavo.decock@kuleuven.be", role = c("aut", "cre"))
