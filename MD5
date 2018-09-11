@@ -1,0 +1,17 @@
+a9eddd13f29044c91005c9a79dd70120 *DESCRIPTION
+fc434994f5746b05c9e0f90622771c93 *LICENSE
+e5ab3c765aa9956f7392a31b6695773a *NAMESPACE
+f8ad5e37e9e60da1ece946e6d2b50db0 *NEWS
+c8e2e144c083860cff61869e75d38a36 *R/decrypt.R
+013df22f4d546ef4a45ba8903d1b0a29 *R/encrypt.R
+38c5ee0b9dea8a50f8af0e44b4b21241 *R/zzz.r
+e773666ebad6f6b4c6b79e2d9467ef2d *README.md
+dbee3cd9e0526e8317313f7f6d78373d *man/decrypt.Rd
+bc57c69bed663b0ecd918fa6acfe422c *man/encrypt.Rd
+3a367ba39c6c171d858088494a02a0a1 *tests/testthat.R
+be34a5789b540b1468b55c03a62e9c9c *tests/testthat/README.md
+5149d403009a139c7e085405ef762e1a *tests/testthat/file1.txt
+3d709e89c8ce201e3c928eb917989aef *tests/testthat/file2.txt
+0440b6b6f41411810f839e9b4f378558 *tests/testthat/file2.txt.asc
+2e769bfc3d5ce2a2392649e68f0787e6 *tests/testthat/test-decrypt.r
+347e98e7f7dbae3d40870f6271e38670 *tests/testthat/test-encrypt.r

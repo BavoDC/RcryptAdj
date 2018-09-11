@@ -9,9 +9,6 @@ xlsxFix(x)
 \arguments{
 \item{x}{An object of class dataframe or a list.}
 }
-\value{
-
-}
 \description{
 Temporary fix for savexlsx function if there are missing values.
 }

@@ -6,6 +6,7 @@
 #' @param ... Arguments to be passed to \code{\link{decrypt}}.
 #'
 #' @return The encrypted Rdata file is loaded into the global environment.
+#' @export
 #'
 LoadRcrypt <- function(filename = ".Rdata.gpg", path = getwd(), RmOrig = T, ...) {
   if(! "rcrypt" %in% names(utils::sessionInfo()$otherPkgs))
@@ -44,6 +45,7 @@ LoadRcrypt <- function(filename = ".Rdata.gpg", path = getwd(), RmOrig = T, ...)
 #' @param ... Arguments to be passed to \code{\link{encrypt}}
 #'
 #' @return The Rdata file is encrypted and will be saved in the same directory as specified in the \code{path} argument.
+#' @export
 EncryptRdata <- function(filename = ".Rdata", path = getwd(), RmOld = T, askPW = T, ...) {
   if(! "rcrypt" %in% names(utils::sessionInfo()$otherPkgs))
     require(rcrypt, quietly = T)

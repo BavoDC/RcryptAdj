@@ -11,6 +11,7 @@
 #' @param pathRscript The path where the temporary Rscript has to be saved.
 #'
 #' @return The extracted files will be saved in pathExtract folder and if specified, removed after a certain time.
+#' @export
 #' @details The extracted files and temporary folder will automatically deleted after the specified time period IF AND
 #' ONLY IF the windows command window is not closed. In addition, there will be some additional temporary files left
 #' that were created to execute the command (an R-script and a .bat file). These can be removed by using the function
@@ -23,6 +24,7 @@ OpenRAR <- function(pathRAR, pathRARexe = "C:/Program Files/Winrar", pathExtract
     stop("pw argument can only be logical")
   if (!rstudioapi::hasFun("askForPassword"))
     stop("Masked input is not supported in your version of RStudio; please update to version >= 0.99.879")
+  savehistory(paste0(Sys.Date(), ".Rhistory"))
   
   if(pw)
     pw = rstudioapi::askForPassword()

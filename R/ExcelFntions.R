@@ -7,6 +7,7 @@
 #' @param rmHist Logical, indicates whether the history has to be deleted.
 #'
 #' @return Returns the excel file as a dataframe.
+#' @export
 #' @details This function needs the package \code{RDCOMClient}, which can be installed using: \cr
 #' \code{library(devtools)} \cr
 #' \code{install_github('omegahat/RDCOMClient')} \cr
@@ -30,8 +31,10 @@ read_excel_pw <- function(path, sheet = NULL, pw = NULL, rmHist = T) {
   else if(length(sheet) > 1)
     stop("Only functionality provided to import one sheet")
   
-  if(rmHist)
+  if(rmHist) {
+    savehistory(paste0(Sys.Date(), ".Rhistory"))
     on.exit(clearhistory())
+  }
   
   # import data
   if(is.null(pw))
@@ -60,11 +63,12 @@ read_excel_pw <- function(path, sheet = NULL, pw = NULL, rmHist = T) {
 }
 
 
-# Function to remove R history
 clearhistory <- function() {
   write("", file=".blank")
   loadhistory(".blank")
   unlink(".blank")
+  loadhistory(paste0(Sys.Date(), ".Rhistory"))
+  unlink(paste0(Sys.Date(), ".Rhistory"))
 }
 
 #' Function to read all sheets of a password protected excel file
@@ -75,6 +79,7 @@ clearhistory <- function() {
 #' @param rmHist Logical, indicates whether the history has to be deleted.
 #'
 #' @return Returns a list with all the excel sheets.
+#' @export
 #' @details This function needs the package \code{RDCOMClient}, which can be installed using: \cr
 #' \code{library(devtools)} \cr
 #' \code{install_github('omegahat/RDCOMClient')} \cr
@@ -91,8 +96,10 @@ read_excel_allsheets_pw <- function(path, pw = NULL, rmHist = T) {
   if(!file.exists(path))
     stop("File not found.")
   
-  if(rmHist)
+  if(rmHist) {
+    savehistory(paste0(Sys.Date(), ".Rhistory"))
     on.exit(clearhistory())
+  }
   
   # import data
   if(is.null(pw))
@@ -129,7 +136,7 @@ read_excel_allsheets_pw <- function(path, pw = NULL, rmHist = T) {
 #'
 #' @param x An object of class dataframe or a list. 
 #'
-#' @return
+#' @export
 #'
 #' @examples
 #' data('mtcars')
@@ -168,6 +175,7 @@ xlsxFix <- function(x) {
 #' give the password using \code{\link[rstudioapi]{askForPassword}}.
 #'
 #' @seealso \code{\link{xlsxFix}}
+#' @export
 #' @examples
 #' 
 #' # Without missing values
@@ -198,8 +206,10 @@ savexlsx <- function(Object, path = paste0(getwd(), "/", deparse(substitute(Obje
   if(anyNA(Object) & !("xlsxFix" %in% class(Object)))
     stop("Missing values detected! Use xlsxFix function.")
   
-  if(pw & rmHist)
+  if(pw & rmHist) {
+    savehistory(paste0(Sys.Date(), ".Rhistory"))
     on.exit(clearhistory())
+  }
   
   if(!is.null(SheetName) & !is.character(SheetName))
     stop("The sheet name has to be of type character")
