@@ -9,9 +9,6 @@
 #' @export
 #'
 LoadRcrypt <- function(filename = ".Rdata.gpg", path = getwd(), RmOrig = T, ...) {
-  if(! "rcrypt" %in% names(utils::sessionInfo()$otherPkgs))
-    require(rcrypt, quietly = T)
-  
   if(!identical(path, getwd())) {
     OldWd = getwd()
     setwd(path)
@@ -47,11 +44,6 @@ LoadRcrypt <- function(filename = ".Rdata.gpg", path = getwd(), RmOrig = T, ...)
 #' @return The Rdata file is encrypted and will be saved in the same directory as specified in the \code{path} argument.
 #' @export
 EncryptRdata <- function(filename = ".Rdata", path = getwd(), RmOld = T, askPW = T, ...) {
-  if(! "rcrypt" %in% names(utils::sessionInfo()$otherPkgs))
-    require(rcrypt, quietly = T)
-  
-  assign("Encr", T, envir = .GlobalEnv)
-  
   if(!identical(path, getwd())) {
     OldWd = getwd()
     setwd(path)
