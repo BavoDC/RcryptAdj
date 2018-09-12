@@ -206,6 +206,9 @@ savexlsx <- function(Object, path = paste0(getwd(), "/", deparse(substitute(Obje
   if(anyNA(Object) & !("xlsxFix" %in% class(Object)))
     stop("Missing values detected! Use xlsxFix function.")
   
+  if(!"java.parameters" %in% names(options()))
+    options( java.parameters = "-Xmx4g" )
+  
   if(pw & rmHist) {
     savehistory(paste0(Sys.Date(), ".Rhistory"))
     on.exit(clearhistory())
@@ -253,6 +256,9 @@ savexlsxlist <- function(.list, path = paste0(getwd(), "/", deparse(substitute(.
   
   if(!all(sapply(.list, class) == "data.frame"))
     .list = lapply(.list, as.data.frame)
+  
+  if(!"java.parameters" %in% names(options()))
+    options( java.parameters = "-Xmx4g" )
   
   if(FixFactor) {
     .list = lapply(.list,
